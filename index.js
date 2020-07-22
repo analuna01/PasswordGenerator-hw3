@@ -1,14 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
@@ -21,31 +19,36 @@ var toUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split();
 var toLowerCase = "abcdefghijklmnopqrstuvwxyz".split();
 var specialChar = " !#$%&'()*+,-./:;<=>?@[^_`{|}~".split();
 
-
 // Promts for password criteria
-function generatePassword () {
-  var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128.");
+function generatePassword() {
+  var passwordLength = prompt(
+    "Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128."
+  );
   var numbers = confirm("Do you want numbers in your password?");
   var toLowerCase = confirm("Do you want lowercase in your password?");
   var toUpperCase = confirm("Do you want uppercase in your password?");
   var specialChar = confirm("Do you want special characters in your password?");
+  
+  return inputValidation(numbers, toLowerCase, toUpperCase, specialChar)
 }
 
-// Input Validation
-function generatePassword () {
-  
-let password = [];
-if (numbers){
-  for (let i=0; i < 8; i++){password.push('randomChar')};
-}
-if (toLowerCase){
-  password = password.concat (toLowerCase);
-}
-if (toUpperCase){
-  password = password.contact (toUpperCase);
-}
-if (specialChar){
-  password = password.contact (specialChar);
+function inputValidation(numbers, toLowerCase, toUpperCase, specialChar) {
+  let password = [];
+  if (numbers) {
+    for (let i = 0; i < 8; i++) {
+      password.push("randomChar");
+    }
+  }
+  if (toLowerCase) {
+    password = password.concat(toLowerCase);
+  }
+  if (toUpperCase) {
+    password = password.contact(toUpperCase);
+  }
+  if (specialChar) {
+    password = password.contact(specialChar);
+  }
+   console.log(password)
 }
 
 function shuffle(array){
@@ -63,24 +66,9 @@ function shuffle(array){
 }
 
 
- //document.getElementById("password").innerHTML =
-// Math.floor(Math.random() * 101);   
-
-
 
 
   
-  
-
-  
-
-
-  
-
- 
-    
-
-
-
+   
 
 
