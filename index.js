@@ -1,6 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var passwordLength = "8>=128";
+var numbers = "0123456789".split();
+var toUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split();
+var toLowerCase = "abcdefghijklmnopqrstuvwxyz".split();
+var specialChar = " !#$%&'()*+,-./:;<=>?@[^_`{|}~".split();
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -12,63 +18,41 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Password criteria
-var passwordLength = "8>=128";
-var numbers = "0123456789".split();
-var toUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split();
-var toLowerCase = "abcdefghijklmnopqrstuvwxyz".split();
-var specialChar = " !#$%&'()*+,-./:;<=>?@[^_`{|}~".split();
-
 // Promts for password criteria
 function generatePassword() {
   var passwordLength = prompt(
     "Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128."
   );
+  if (passwordLength <8 || passwordLength >128) {
+    alert("Please select between 8 and 128 characters")
+    return; 
+  }
   var numbers = confirm("Do you want numbers in your password?");
   var toLowerCase = confirm("Do you want lowercase in your password?");
   var toUpperCase = confirm("Do you want uppercase in your password?");
   var specialChar = confirm("Do you want special characters in your password?");
   
-  return inputValidation(numbers, toLowerCase, toUpperCase, specialChar)
-}
-
-function inputValidation(numbers, toLowerCase, toUpperCase, specialChar) {
-  let password = [];
+  var InputVal = []
+  let password = "";
   if (numbers) {
-    for (let i = 0; i < 8; i++) {
-      password.push("randomChar");
-    }
+    InputVal.push(numbers);
   }
   if (toLowerCase) {
-    password = password.concat(toLowerCase);
+    InputVal.push(toLowerCase);
   }
   if (toUpperCase) {
-    password = password.contact(toUpperCase);
+    InputVal.push(toUpperCase);
   }
   if (specialChar) {
-    password = password.contact(specialChar);
+    InputVal.push(specialChar);
   }
    console.log(password)
-}
 
-function shuffle(array){
-  var password = array.passwordLength, temporaryValue, randompassword;
-  while (0 !==password){
-    randompassword = Math.floor(Math.random()* password);
-    password -=1;
-    temporaryValue = array [password];
-    array[password]= array [randompassword];
-    array[randompassword] = temporaryValue;
+  var result = InputVal.flat()
 
+  for (var i=0; i<passwordLength; i++) {
+  password = password + [Math.floor(Math.random()* passwordLength)];
   }
-  return array;
-
+  return password;
 }
-
-
-
-
-  
-   
-
 
